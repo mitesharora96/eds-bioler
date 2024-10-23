@@ -12,7 +12,7 @@
 
 :root {
   /* colors */
-  --background-color: white;
+  --background-color: cyan;
   --light-color: #f8f8f8;
   --dark-color: #505050;
   --text-color: #131313;
@@ -73,8 +73,10 @@
 body {
   display: none;
   margin: 0;
-  background-color: var(--background-color);
-  color: var(--text-color);
+  /* background-color: var(--background-color); */
+  /* color: var(--text-color); */
+  background-color: cyan;
+  color:magenta;
   font-family: var(--body-font-family);
   font-size: var(--body-font-size-m);
   line-height: 1.6;
