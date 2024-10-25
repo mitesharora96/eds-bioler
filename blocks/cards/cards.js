@@ -1,7 +1,9 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
-
-export default function decorate(block) {
+import { fetchPlaceholders, getMetadata } from '../../scripts/aem.js'; 
+export default async function decorate(block) {
   /* change to ul, li */
+  const placeholders = await fetchPlaceholders(''); 
+  const {clickHere} = placeholders
   const ul = document.createElement('ul');
   [...block.children].forEach((row) => {
     const li = document.createElement('li');
@@ -9,6 +11,13 @@ export default function decorate(block) {
     [...li.children].forEach((div) => {
       if (div.children.length === 1 && div.querySelector('picture')) div.className = 'cards-card-image';
       else div.className = 'cards-card-body';
+
+      if(div.querySelector('h3')){
+        div.querySelector('h3').addEventListener("click", ()=>{
+         div.querySelector('h3').innerHTML = clickHere
+          // console.log(div);
+        });
+      }
     });
     ul.append(li);
   });
@@ -16,3 +25,4 @@ export default function decorate(block) {
   block.textContent = '';
   block.append(ul);
 }
+
